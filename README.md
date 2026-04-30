@@ -1,6 +1,6 @@
 # CMOR 438 — Spring 2026 Final Project
 
-**Author:** Jesse Chen  
+**Author:** Jesse Chen, Rahul Santhanam, Arhan Sankhla, Jason Swann
 **Course:** CMOR 438 — Data Science and Machine Learning  
 **Term:** Spring 2026  
 **Institution:** Rice University
