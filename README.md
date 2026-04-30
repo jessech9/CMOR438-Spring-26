@@ -5,8 +5,7 @@
 **Term:** Spring 2026  
 **Institution:** Rice University
 
-This repository is my end-of-semester project for CMOR 438. It contains
-two interconnected pieces of work:
+This final project for CMOR 438 – Data Science & Machine Learning applies a variety of machine learning techniques to real-world datasets. Through hands‑on Jupyter notebooks, we demonstrate data exploration, preprocessing, modeling, and evaluation workflows.
 
 1. **`learnlab`** — a small, NumPy-only Python package that implements
    the classical machine-learning algorithms covered in the course from
