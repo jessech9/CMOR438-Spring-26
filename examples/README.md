@@ -8,7 +8,7 @@ applied to a dataset. Each algorithm folder also has a short
 
 ```
 examples/
-├── supervised_ml/
+├── supervised_learning/
 │   ├── Decision Tree/                  ← Crop Recommendation
 │   ├── Gradient Boosting/              ← Banknote Authentication
 │   ├── K Means Clustering/             ← Wholesale Customers Data Set
@@ -19,7 +19,7 @@ examples/
 │   ├── Perceptron/                     ← Fetal Health Classification
 │   ├── Random Forest/                  ← Crop Recommendation
 │   └── README.md
-└── unsupervised_ml/
+└── unsupervised_learning/
     ├── DBSCAN/                         ← Customer Personality Analysis
     ├── K Means Clustering/             ← Wholesale Customers Data Set
     ├── PCA/                            ← Fetal Health Classification
