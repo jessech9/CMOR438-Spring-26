@@ -1,3 +1,5 @@
 """Unsupervised learning algorithms (algorithms added incrementally)."""
 
-__all__: list[str] = []
+from .dbscan import DBSCAN
+
+__all__ = ["DBSCAN"]
