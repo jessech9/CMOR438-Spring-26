@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rice_ml"
+version = "0.1.0"
+description = "A from-scratch machine learning package for CMOR 438 (Spring 2026)."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Jesse Chen" },
+    { name = "Rahul Santhanam" },
+    { name = "Arhan Sankhla" },
+    { name = "Jason Swann" },
+]
+keywords = ["machine learning", "numpy", "cmor438", "rice"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Education",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+notebooks = [
+    "jupyter",
+    "seaborn>=0.12",
+    "scikit-learn>=1.3",
+]
+
+[project.urls]
+Homepage = "https://github.com/jessech9/CMOR438-Spring-26"
+Issues = "https://github.com/jessech9/CMOR438-Spring-26/issues"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers"
+testpaths = ["tests/unit"]
+pythonpath = ["src"]
