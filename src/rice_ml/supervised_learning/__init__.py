@@ -1,3 +1,5 @@
 """Supervised learning algorithms (algorithms added incrementally)."""
 
-__all__: list[str] = []
+from .knn import KNeighborsClassifier, KNeighborsRegressor
+
+__all__ = ["KNeighborsClassifier", "KNeighborsRegressor"]
