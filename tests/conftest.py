@@ -1,4 +1,4 @@
-"""Shared fixtures used by unit tests."""
+"""Shared fixtures used by the rice_ml test suite."""
 
 from __future__ import annotations
 
@@ -9,6 +9,17 @@ import pytest
 @pytest.fixture
 def rng():
     return np.random.default_rng(42)
+
+
+@pytest.fixture
+def regression_data(rng):
+    """Linear regression data with 3 features and known coefficients."""
+    n, p = 200, 3
+    X = rng.normal(size=(n, p))
+    coef = np.array([1.5, -2.0, 0.7])
+    intercept = 4.0
+    y = X @ coef + intercept + 0.1 * rng.normal(size=n)
+    return X, y, coef, intercept
 
 
 @pytest.fixture
