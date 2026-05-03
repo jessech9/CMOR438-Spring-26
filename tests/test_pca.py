@@ -1,11 +1,11 @@
-"""Tests for ``rice_ml.Unsupervised_Learning.pca``."""
+"""Tests for ``rice_ml.unsupervised_learning.pca``."""
 
 from __future__ import annotations
 
 import numpy as np
 import pytest
 
-from rice_ml.Unsupervised_Learning.pca import PCA
+from rice_ml.unsupervised_learning.pca import PCA
 
 
 def test_pca_recovers_principal_axis_in_2d():
