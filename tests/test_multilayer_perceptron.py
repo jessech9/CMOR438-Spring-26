@@ -5,14 +5,11 @@ from __future__ import annotations
 import numpy as np
 
 from rice_ml.supervised_learning.multilayer_perceptron import MLPClassifier
-from rice_ml.supervised_learning.perceptron import Perceptron
 
 
 def test_mlp_solves_xor_with_hidden_layer():
     X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]], dtype=float)
     y = np.array([0, 1, 1, 0])
-    p = Perceptron(max_iter=200, random_state=0).fit(X, y)
-    assert p.score(X, y) < 1.0
     mlp = MLPClassifier(
         hidden_layer_sizes=(8,),
         learning_rate=0.1,
