@@ -1,0 +1,1 @@
+Example of SVD model on the wholesale_customers.csv data set
