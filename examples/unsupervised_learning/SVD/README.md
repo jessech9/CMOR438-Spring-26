@@ -16,7 +16,7 @@ where $\sigma_1 \ge \sigma_2 \ge \dots \ge \sigma_r > 0$ are the
 singular values and $u_i$, $v_i$ are the corresponding left and right
 singular vectors.
 
-The **best rank-$k$ approximation** drops everything past the $k$th
+The **best rank-k approximation** drops everything past the kth
 singular value:
 
 $$X_k = \sum_{i=1}^{k} \sigma_i\,u_i\,v_i^\top$$
