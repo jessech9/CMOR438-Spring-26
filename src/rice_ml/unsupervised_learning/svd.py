@@ -20,7 +20,7 @@ class SVD(BaseEstimator):
     r"""Truncated Singular Value Decomposition.
 
     Factorizes the data matrix (without centering) as
-    :math:`X \approx U_k \Sigma_k V_k^\top`.∏
+    :math:`X \approx U_k \Sigma_k V_k^\top`.
     """
 
     _estimator_type = "transformer"

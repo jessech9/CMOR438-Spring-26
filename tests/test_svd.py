@@ -1,11 +1,11 @@
-"""Tests for ``rice_ml.Unsupervised_Learning.svd``."""
+"""Tests for ``rice_ml.unsupervised_learning.svd``."""
 
 from __future__ import annotations
 
 import numpy as np
 import pytest
 
-from rice_ml.Unsupervised_Learning.svd import SVD
+from rice_ml.unsupervised_learning.svd import SVD
 
 
 def test_svd_factorization_reconstructs_data():
