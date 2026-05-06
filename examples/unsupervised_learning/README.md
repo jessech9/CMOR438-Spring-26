@@ -8,12 +8,13 @@ folder with a brief `README.md` and a notebook.
 
 | Algorithm           | Dataset                                | Folder                                                  |
 | ------------------- | -------------------------------------- | ------------------------------------------------------- |
-| DBSCAN              | Customer Personality Analysis          | [`DBSCAN/`](DBSCAN/)                                    |
 | K Means Clustering  | Wholesale Customers Data Set           | [`K Means Clustering/`](K%20Means%20Clustering/)        |
+| DBSCAN              | Customer Personality Analysis          | [`DBSCAN/`](DBSCAN/)                                    |
 | PCA                 | Fetal Health Classification            | [`PCA/`](PCA/)                                          |
 | SVD                 | Wholesale Customers Data Set           | [`SVD/`](SVD/)                                          |
 
-Each notebook reads its CSV from the repository [`data/`](../../data/) folder via `find_data_file`.
+Each notebook reads its CSV from the repository [`data/`](../../data/)
+folder via `find_data_file`.
 
 ## How unsupervised learning works
 
