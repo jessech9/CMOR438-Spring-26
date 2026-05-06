@@ -1,11 +1,11 @@
 # CMOR 438 — Spring 2026
 
-**Author:** Jesse Chen, Rahul Santhanam, Arhan Sankhla, Jason Swann  
-**Course:** CMOR 438 — Data Science and Machine Learning  
-**Term:** Spring 2026  
+**Authors:** Jesse Chen, Rahul Santhanam, Arhan Sankhla, Jason Swann
+**Course:** CMOR 438 — Data Science and Machine Learning
+**Term:** Spring 2026
 **Institution:** Rice University
 
-This repository is my final project for CMOR 438. It pairs:
+This repository is our final project for CMOR 438. It pairs:
 
 1. **`rice_ml`** — a small, NumPy-only Python package implementing the
    classical machine-learning algorithms covered in the course from
@@ -17,49 +17,56 @@ This repository is my final project for CMOR 438. It pairs:
 Tests are run with `pytest`; CI runs the suite on every push and pull
 request.
 
+Each contributor also has a personal README at the repo root
+(`README-jessech9.md`, `README-arhansa.md`, `README-rahulsanthanam0.md`)
+documenting the modules / notebooks / tests they own.
+
 ---
 
 ## Repository layout
 
 ```
 .
-├── src/rice_ml/                           # the from-scratch ML package
+├── src/rice_ml/                                # the from-scratch ML package
 │   ├── supervised_learning/
-│   │   ├── linear.py                      # LinearRegression, LogisticRegression
-│   │   ├── neighbors.py                   # KNeighbors{Classifier,Regressor}
-│   │   ├── trees.py                       # DecisionTree{Classifier,Regressor}
-│   │   ├── ensembles.py                   # RandomForest, GradientBoostingRegressor
-│   │   └── neural.py                      # Perceptron, MLPClassifier
+│   │   ├── linear.py                           # LinearRegression, LogisticRegression
+│   │   ├── knn.py                              # KNeighborsClassifier, KNeighborsRegressor
+│   │   ├── decision_tree.py                    # DecisionTreeClassifier, DecisionTreeRegressor
+│   │   ├── random_forest.py                    # RandomForestClassifier, RandomForestRegressor
+│   │   ├── gradient_boosting.py                # GradientBoostingClassifier
+│   │   ├── ensemble_methods.py                 # back-compat re-exports of RF + GB
+│   │   ├── perceptron.py                       # Perceptron
+│   │   └── multilayer_perceptron.py            # MLPClassifier
 │   ├── unsupervised_learning/
-│   │   ├── clustering.py                  # KMeans (k-means++), DBSCAN
-│   │   └── decomposition.py               # PCA, SVD
+│   │   ├── dbscan.py                           # DBSCAN
+│   │   ├── pca.py                              # PCA
+│   │   ├── svd.py                              # SVD
+│   │   └── k_means_clustering.py               # KMeans (placeholder)
 │   ├── processing/
-│   │   ├── preprocessing.py               # StandardScaler, MinMaxScaler, train_test_split, ...
-│   │   ├── metrics.py                     # accuracy, R^2, ROC-AUC, silhouette, ...
-│   │   └── model_selection.py             # KFold, cross_val_score, GridSearchCV
-│   └── _base.py                           # BaseEstimator + mixins + check_array / check_X_y
+│   │   ├── pre_processing.py                   # StandardScaler, MinMaxScaler, train_test_split, ...
+│   │   ├── post_processing.py                  # accuracy, R^2, ROC-AUC, silhouette, ...
+│   │   └── datasets.py                         # find_data_file()
+│   └── _base.py                                # BaseEstimator + mixins + check_array / check_X_y
 │
-├── data/                                  # CSVs read by the example notebooks
+├── data/                                       # CSVs read by the example notebooks
 ├── examples/
-│   ├── supervised_ml/
-│   │   ├── Decision Tree/                 ← Crop Recommendation
-│   │   ├── Gradient Boosting/             ← Credit Card Fraud (pending)
-│   │   ├── K Means Clustering/            ← Spotify Tracks (pending)
-│   │   ├── K Nearest Neighbors/           ← Crop Recommendation
-│   │   ├── Linear Regression/             ← Steel Industry Energy Consumption
-│   │   ├── Logistic Regression/           ← Credit Card Fraud (pending)
-│   │   ├── Neural Network/                ← Fashion MNIST (pending)
-│   │   ├── Perceptron/                    ← Fashion MNIST (pending)
-│   │   └── Random Forest/                 ← Crop Recommendation
-│   └── unsupervised_ml/
-│       ├── DBSCAN/                        ← Customer Personality Analysis
-│       ├── K Means Clustering/            ← Spotify Tracks (pending)
-│       ├── PCA/                           ← Fashion MNIST (pending)
-│       └── SVD/                           ← Spotify Tracks (pending)
+│   ├── supervised_learning/
+│   │   ├── Decision Tree/                      ← Crop Recommendation
+│   │   ├── Gradient Boosting/                  ← Banknote Authentication
+│   │   ├── K Nearest Neighbors/                ← Crop Recommendation
+│   │   ├── Linear Regression/                  ← Steel Industry Energy Consumption
+│   │   ├── Logistic Regression/                ← Banknote Authentication
+│   │   ├── Neural Network/                     ← Fetal Health
+│   │   ├── Perceptron/                         ← Fetal Health
+│   │   └── Random Forest/                      ← Crop Recommendation
+│   └── unsupervised_learning/
+│       ├── DBSCAN/                             ← Customer Personality Analysis
+│       ├── K Means Clustering/                 ← Wholesale Customers
+│       ├── PCA/                                ← Fetal Health
+│       └── SVD/                                ← Wholesale Customers
 │
-├── tests/                                 # pytest suite, one test file per module
-├── scripts/build_notebooks.py             # source-of-truth for every notebook
-├── .github/workflows/tests.yml            # CI: pytest on Python 3.10 / 3.11 / 3.12
+├── tests/                                      # pytest suite, one file per algorithm
+├── .github/workflows/tests.yml                 # CI: pytest on Python 3.10 / 3.11 / 3.12
 ├── pyproject.toml
 ├── requirements.txt
 └── LICENSE
@@ -69,31 +76,31 @@ request.
 
 ## Algorithms
 
-| Family                       | Module                                       | Classes                                                                                |
-| ---------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------- |
-| Linear models                | `supervised_learning.linear`                 | `LinearRegression`, `LogisticRegression`                                               |
-| Distance-based               | `supervised_learning.neighbors`              | `KNeighborsClassifier`, `KNeighborsRegressor`                                          |
-| Trees                        | `supervised_learning.trees`                  | `DecisionTreeClassifier`, `DecisionTreeRegressor`                                      |
-| Ensembles                    | `supervised_learning.ensembles`              | `RandomForestClassifier`, `RandomForestRegressor`, `GradientBoostingRegressor`         |
-| Neural networks              | `supervised_learning.neural`                 | `Perceptron`, `MLPClassifier`                                                          |
-| Clustering                   | `unsupervised_learning.clustering`           | `KMeans` (with k-means++), `DBSCAN`                                                    |
-| Dimensionality reduction     | `unsupervised_learning.decomposition`        | `PCA`, `SVD`                                                                           |
-| Preprocessing                | `processing.preprocessing`                   | `StandardScaler`, `MinMaxScaler`, `LabelEncoder`, `train_test_split`, `one_hot_encode` |
-| Metrics                      | `processing.metrics`                         | `accuracy_score`, `confusion_matrix`, `precision_recall_f1`, `roc_auc_score`, `mean_squared_error`, `r2_score`, `silhouette_score`, ... |
-| Model selection              | `processing.model_selection`                 | `KFold`, `cross_val_score`, `GridSearchCV`                                             |
+| Family                       | Module                                                       | Classes (exported via package `__init__`)                            |
+| ---------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------- |
+| Linear models                | `supervised_learning.linear`                                 | `LinearRegression`, `LogisticRegression`                             |
+| Distance-based               | `supervised_learning.knn`                                    | `KNeighborsClassifier`, `KNeighborsRegressor`                        |
+| Trees                        | `supervised_learning.decision_tree`                          | `DecisionTreeClassifier`, `DecisionTreeRegressor`                    |
+| Ensembles                    | `supervised_learning.random_forest`, `…gradient_boosting`    | `RandomForest{Classifier,Regressor}`, `GradientBoostingClassifier`   |
+| Neural networks              | `supervised_learning.perceptron`, `…multilayer_perceptron`   | `Perceptron`, `MLPClassifier` (importable directly from each module) |
+| Clustering                   | `unsupervised_learning.dbscan`                               | `DBSCAN`                                                             |
+| Dimensionality reduction     | `unsupervised_learning.pca`, `unsupervised_learning.svd`     | `PCA` (importable directly), `SVD`                                   |
+| Pre-processing               | `processing.pre_processing`                                  | `StandardScaler`, `MinMaxScaler`, `LabelEncoder`, `train_test_split`, `one_hot_encode` |
+| Post-processing (metrics)    | `processing.post_processing`                                 | `accuracy_score`, `confusion_matrix`, `precision_recall_f1`, `roc_auc_score`, `mean_squared_error`, `root_mean_squared_error`, `mean_absolute_error`, `r2_score`, `silhouette_score` |
+| Dataset locator              | `processing.datasets`                                        | `find_data_file`                                                     |
 
 Every estimator follows a consistent `(fit / predict / score)` contract
-via `BaseEstimator`, `ClassifierMixin`, and `RegressorMixin` in
-`rice_ml._base`.
+via `BaseEstimator`, `ClassifierMixin`, `RegressorMixin`, and
+`ClusterMixin` in `rice_ml._base`.
 
 ---
 
 ## Quickstart
 
 ```bash
-git clone https://github.com/jessech9/CMOR438-Spring-2026.git
-cd CMOR438-Spring-2026
-python -m pip install -e .[dev,notebooks]
+git clone https://github.com/jessech9/CMOR438-Spring-26.git
+cd CMOR438-Spring-26
+python -m pip install -e ".[dev,notebooks]"
 ```
 
 Example use:
@@ -101,8 +108,8 @@ Example use:
 ```python
 from sklearn.datasets import load_breast_cancer
 from rice_ml.supervised_learning.linear import LogisticRegression
-from rice_ml.processing.preprocessing import StandardScaler, train_test_split
-from rice_ml.processing.metrics import roc_auc_score
+from rice_ml.processing.pre_processing import StandardScaler, train_test_split
+from rice_ml.processing.post_processing import roc_auc_score
 
 X, y = load_breast_cancer(return_X_y=True)
 X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.2, random_state=0)
@@ -123,8 +130,8 @@ pytest --cov=rice_ml
 jupyter lab examples/
 ```
 
-All notebooks are pre-executed so figures and outputs render directly
-on GitHub.
+All notebooks are checked in with executed outputs so figures and tables
+render directly on GitHub.
 
 ---
 
